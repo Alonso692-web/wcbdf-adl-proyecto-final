@@ -1,0 +1,101 @@
+<div class="container-fluid min-vh-100 bg-light py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card border-0 shadow-lg">
+        <!-- Header -->
+        <div class="card-header bg-primary text-white p-4 border-0">
+          <h3 class="text-center mb-0 fw-bold">Proyecto Final</h3>
+        </div>
+
+        <!-- Body -->
+        <div class="card-body p-4">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <!-- Username field -->
+            <div class="mb-4">
+              <label for="username" class="form-label fw-semibold">Usuario</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white">
+                  <i class="bi bi-person"></i>
+                </span>
+                <input 
+                  type="text" 
+                  formControlName="username" 
+                  class="form-control form-control-lg shadow-none"
+                  [ngClass]="{ 'is-invalid': submitted && loginForm.get('username')?.errors }" />
+                <div *ngIf="submitted && loginForm.get('username')?.errors" class="invalid-feedback">
+                  <div *ngIf="loginForm.get('username')?.errors?.['required']">El usuario es requerido</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Password field -->
+            <div class="mb-4">
+              <label for="password" class="form-label fw-semibold">Contraseña</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white">
+                  <i class="bi bi-lock"></i>
+                </span>
+                <input 
+                  type="password" 
+                  formControlName="password" 
+                  class="form-control form-control-lg shadow-none"
+                  [ngClass]="{ 'is-invalid': submitted && loginForm.get('password')?.errors }" />
+                <div *ngIf="submitted && loginForm.get('password')?.errors" class="invalid-feedback">
+                  <div *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit button -->
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary btn-lg">
+                <span>Ingresar</span>
+                <i class="bi bi-arrow-right ms-2"></i>
+              </button>
+            </div>
+
+            <!-- Error message -->
+            <div *ngIf="error" class="alert alert-danger mt-4">
+              {{error}}
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">Proyecto Final</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="form-group mb-3">
+              <label for="username">Usuario</label>
+              <input type="text" formControlName="username" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && loginForm.get('username')?.errors }" />
+              <div *ngIf="submitted && loginForm.get('username')?.errors" class="invalid-feedback">
+                <div *ngIf="loginForm.get('username')?.errors?.['required']">El usuario es requerido</div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="password">Contraseña</label>
+              <input type="password" formControlName="password" class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && loginForm.get('password')?.errors }" />
+              <div *ngIf="submitted && loginForm.get('password')?.errors" class="invalid-feedback">
+                <div *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-success w-100">Ingresar</button>
+            </div>
+            <div *ngIf="error" class="alert alert-danger mt-3">{{error}}</div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
