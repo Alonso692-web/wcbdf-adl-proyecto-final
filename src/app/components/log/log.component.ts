@@ -1,4 +1,5 @@
-/*import { Component, OnInit, ViewChild } from '@angular/core';
+/*
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { LogsService } from '../../services/logs.service';
 import { AuthService } from '../../services/auth.service';
 import { Log } from '../../models/log.model';
@@ -132,7 +133,7 @@ export class LogComponent implements OnInit {
     }
   }
 }*/
-
+// src/app/components/log/log.component.ts
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LogsService } from '../../services/logs.service';
 import { AuthService } from '../../services/auth.service';
@@ -142,7 +143,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-// Definir la interfaz para el gasto
 interface Expense {
   expenseId: number;
   expenseDate: string;
@@ -158,12 +158,12 @@ interface Expense {
   imports: [CommonModule, ReactiveFormsModule, NgbModule],
 })
 export class LogComponent implements OnInit {
-  @ViewChild('logModal') logModal: any; // Referencia al modal
-  listadoLogs: Expense[] = []; // Lista de gastos
-  loading = false; // Estado de carga
-  logForm: FormGroup; // Formulario reactivo
-  isEditMode = false; // Modo edición
-  currentLogId: number | null = null; // ID actual del gasto
+  @ViewChild('logModal') logModal: any;
+  listadoLogs: Expense[] = [];
+  loading = false;
+  logForm: FormGroup;
+  isEditMode = false;
+  currentLogId: number | null = null;
 
   constructor(
     private logsService: LogsService,
@@ -171,18 +171,15 @@ export class LogComponent implements OnInit {
     private modalService: NgbModal,
     private fb: FormBuilder
   ) {
-    // Inicializar formulario reactivo
     this.logForm = this.fb.group({
       expenseDate: ['', [Validators.required]],
       amount: [0, [Validators.required, Validators.min(0.01)]],
       description: ['', [Validators.required, Validators.minLength(3)]],
     });
-
   }
 
-
   ngOnInit() {
-    this.cargarLogs(); // Cargar gastos al iniciar
+    this.cargarLogs();
   }
 
   cargarLogs() {
@@ -190,8 +187,7 @@ export class LogComponent implements OnInit {
       this.loading = true;
       this.logsService.getLogs().subscribe({
         next: (response) => {
-          // Accede a la propiedad expenses
-          this.listadoLogs = response.expenses || []; // Asigna un arreglo vacío si no hay datos
+          this.listadoLogs = response.expenses || [];
           this.loading = false;
         },
         error: (error) => {
@@ -201,8 +197,6 @@ export class LogComponent implements OnInit {
       });
     }
   }
-  
-
 
   createLog() {
     this.isEditMode = false;
