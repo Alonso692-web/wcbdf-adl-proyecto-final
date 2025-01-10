@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 export class CreditosComponent {
   developer = {
     name: 'Alonso Domínguez López',
-    group: '7CM1',
+    group: '7CM2',
     email: 'adominguezl2100@alumno.ipn.mx'
   };
 }
