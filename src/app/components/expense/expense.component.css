@@ -1,0 +1,56 @@
+/* En expense.component.css */
+
+.container {
+    max-width: 1400px;
+    /* Aumenta el ancho máximo del contenedor */
+    margin: 0 auto;
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    max-width: 100%;
+}
+
+.table th,
+.table td {
+    white-space: nowrap;
+    /* Evita que el texto de las celdas se rompa */
+    text-align: center;
+}
+
+/* Opcional: Ajustar anchos de las columnas */
+.table th:nth-child(1),
+/* expenseId */
+.table td:nth-child(1) {
+    width: 10%;
+}
+
+.table th:nth-child(2),
+/* Fecha */
+.table td:nth-child(2) {
+    width: 15%;
+}
+
+.table th:nth-child(3),
+/* Monto */
+.table td:nth-child(3) {
+    width: 15%;
+}
+
+.table th:nth-child(4),
+/* Descripcion */
+.table td:nth-child(4) {
+    width: 40%;
+}
+
+.table th:nth-child(5),
+/* Acciones */
+.table td:nth-child(5) {
+    width: 20%;
+}

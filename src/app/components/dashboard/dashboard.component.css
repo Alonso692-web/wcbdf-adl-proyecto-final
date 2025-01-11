@@ -1,0 +1,16 @@
+/* En dashboard.component.css */
+
+.container-fluid {
+    min-height: 100vh;
+     overflow: auto; /*Cambia overflow-y por overflow*/
+     width: 100%;
+   }
+   main {
+       flex: 1;
+       padding: 20px;
+       display: flex;
+       flex-direction: column;
+       /*Eliminamos align-items*/
+       width: 100%;
+        margin-bottom: 120px;
+      }

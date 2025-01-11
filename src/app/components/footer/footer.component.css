@@ -1,12 +1,5 @@
 .footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     background-color: #f8f9fa;
     padding: 1rem 0;
-}
-
-/* Añade un margen inferior al contenido principal para evitar que el footer lo tape */
-.content {
-    margin-bottom: 200px; /* Ajusta este valor según la altura de tu footer */
 }
