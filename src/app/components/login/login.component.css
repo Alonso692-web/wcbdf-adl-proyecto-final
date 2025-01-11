@@ -1,0 +1,73 @@
+.login-container {
+    background-attachment: fixed;
+}
+
+.login-card {
+    transition: transform 0.3s ease;
+}
+
+.login-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Logo circular */
+.logo-circle {
+    width: 80px;
+    height: 80px;
+    background: rgba(13, 110, 253, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Campos de formulario */
+.form-floating>.form-control {
+    height: 60px;
+    border-radius: 12px;
+}
+
+.form-floating>label {
+    padding-left: 1.5rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+/* Mensaje de error debajo de los inputs */
+.error-message {
+    color: #dc3545;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+/* Botón submit con efecto hover */
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
+}
+
+/* Animación para el mensaje de error */
+.error-alert {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

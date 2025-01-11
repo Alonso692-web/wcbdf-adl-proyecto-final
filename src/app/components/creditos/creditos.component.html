@@ -1,14 +1,14 @@
-<div class="credits-container d-flex justify-content-center align-items-center min-vh-100 bg-light">
-  <div class="credits-card card shadow-lg p-4 rounded-lg" style="max-width: 500px;">
-    <div class="image-placeholder text-center mb-4">
-      <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="Developer Icon"
-        class="placeholder-icon img-fluid rounded-circle border border-primary" style="width: 120px; height: 120px;">
-    </div>
-    <div class="credits-content text-center">
-      <h1 class="display-4 text-bg-dark">Desarrollado por: </h1>
-      <h2 class="h3 text-dark">{{ developer.name }}</h2>
-      <h3 class="h5 text-muted">{{ developer.group }}</h3>
-      <h3 class="h5 text-muted">{{ developer.email }}</h3>
-    </div>
+<div class="credits-container">
+  <div class="credits-card card shadow-lg rounded-lg">
+      <div class="avatar-container text-center mb-3">
+          <img src="https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png" alt="Developer Avatar"
+              class="avatar-img rounded-circle">
+      </div>
+      <div class="credits-content text-center">
+          <h1 class="text-bg-dark" style="margin-bottom: 40px;">Desarrollado por:</h1>
+          <h2 class="developer-name">{{ developer.name }}</h2>
+          <h3 class="developer-group">{{ developer.group }}</h3>
+          <h3 class="developer-email">{{ developer.email }}</h3>
+      </div>
   </div>
 </div>

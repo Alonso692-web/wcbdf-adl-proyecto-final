@@ -1,66 +1,76 @@
-<div class="container-fluid min-vh-100 bg-light py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-4">
-      <div class="card border-0 shadow-lg">
-        <!-- Header -->
-        <div class="card-header bg-primary text-white p-4 border-0">
-          <h3 class="text-center mb-0 fw-bold">Proyecto Final</h3>
-        </div>
+<div class="login-container min-vh-100 d-flex align-items-center py-5" 
+     style="background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <!-- Card principal -->
+        <div class="login-card bg-white rounded-4 shadow-lg overflow-hidden">
+          <!-- Header con logo -->
+          <div class="text-center pt-5 pb-4">
+            <div class="logo-circle mb-3 mx-auto">
+              <i class="bi bi-shield-lock text-primary" style="font-size: 2rem;"></i>
+            </div>
+            <h2 class="fw-bold">Bienvenido</h2>
+            <p class="text-muted">Ingresa tus credenciales para continuar</p>
+          </div>
 
-        <!-- Body -->
-        <div class="card-body p-4">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <!-- Username field -->
-            <div class="mb-4">
-              <label for="username" class="form-label fw-semibold">Usuario</label>
-              <div class="input-group">
-                <span class="input-group-text bg-white">
-                  <i class="bi bi-person"></i>
-                </span>
-                <input 
-                placeholder="Ingrese su usuario"
-                  type="text" 
-                  formControlName="username" 
-                  class="form-control form-control-lg shadow-none"
-                  [ngClass]="{ 'is-invalid': submitted && loginForm.get('username')?.errors }" />
-                <div *ngIf="submitted && loginForm.get('username')?.errors" class="invalid-feedback">
-                  <div *ngIf="loginForm.get('username')?.errors?.['required']">El usuario es requerido</div>
+          <!-- Formulario -->
+          <div class="p-4">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <!-- Campo Usuario -->
+              <div class="form-floating mb-4">
+                <input type="text"
+                       formControlName="username"
+                       class="form-control border-0 bg-light"
+                       [ngClass]="{ 'is-invalid': submitted && loginForm.get('username')?.errors }"
+                       id="username"
+                       placeholder="Usuario">
+                <label for="username">
+                  <i class="bi bi-person me-2"></i>Usuario
+                </label>
+                <div *ngIf="submitted && loginForm.get('username')?.errors" 
+                     class="error-message">
+                  <i class="bi bi-exclamation-circle me-1"></i>
+                  <small>Por favor, ingresa tu nombre de usuario</small>
                 </div>
               </div>
-            </div>
 
-            <!-- Password field -->
-            <div class="mb-4">
-              <label for="password" class="form-label fw-semibold">Contraseña</label>
-              <div class="input-group">
-                <span class="input-group-text bg-white">
-                  <i class="bi bi-lock"></i>
-                </span>
-                <input 
-                placeholder="Ingrese su contraseña"
-                  type="password" 
-                  formControlName="password" 
-                  class="form-control form-control-lg shadow-none"
-                  [ngClass]="{ 'is-invalid': submitted && loginForm.get('password')?.errors }" />
-                <div *ngIf="submitted && loginForm.get('password')?.errors" class="invalid-feedback">
-                  <div *ngIf="loginForm.get('password')?.errors?.['required']">La contraseña es requerida</div>
+              <!-- Campo Contraseña -->
+              <div class="form-floating mb-4">
+                <input type="password"
+                       formControlName="password"
+                       class="form-control border-0 bg-light"
+                       [ngClass]="{ 'is-invalid': submitted && loginForm.get('password')?.errors }"
+                       id="password"
+                       placeholder="Contraseña">
+                <label for="password">
+                  <i class="bi bi-lock me-2"></i>Contraseña
+                </label>
+                <div *ngIf="submitted && loginForm.get('password')?.errors" 
+                     class="error-message">
+                  <i class="bi bi-exclamation-circle me-1"></i>
+                  <small>Por favor, ingresa tu contraseña</small>
                 </div>
               </div>
-            </div>
 
-            <!-- Submit button -->
-            <div class="d-grid gap-2">
-              <button type="submit" class="btn btn-primary btn-lg">
-                <span>Ingresar</span>
-                <i class="bi bi-arrow-right ms-2"></i>
+              <!-- Botón Submit -->
+              <button type="submit" 
+                      class="btn btn-primary w-100 py-3 rounded-3 mb-3 position-relative overflow-hidden">
+                <span class="d-flex align-items-center justify-content-center">
+                  <span>Iniciar Sesión</span>
+                  <i class="bi bi-arrow-right-circle ms-2"></i>
+                </span>
               </button>
-            </div>
 
-            <!-- Error message -->
-            <div *ngIf="error" class="alert alert-danger mt-4">
-              {{error}}
-            </div>
-          </form>
+              <!-- Mensaje de Error -->
+              <div *ngIf="error" class="error-alert">
+                <div class="d-flex align-items-center bg-danger bg-opacity-10 text-danger rounded-3 p-3">
+                  <i class="bi bi-exclamation-triangle me-2"></i>
+                  <span>{{error}}</span>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>

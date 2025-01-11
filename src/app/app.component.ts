@@ -11,7 +11,7 @@ import { FooterComponent } from "./components/footer/footer.component";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, CommonModule]
+  imports: [RouterOutlet, HeaderComponent, CommonModule, FooterComponent]
 })
 export class AppComponent {
   constructor(private authService: AuthService) {}

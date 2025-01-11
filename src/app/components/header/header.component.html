@@ -1,36 +1,45 @@
-<!-- src/app/components/header/header.component.html -->
-
-<nav class="navbar navbar-expand-lg shadow-none" style="background-color: #f5f5f5;">
+<nav class="navbar navbar-expand-lg py-3" style="background-color: #ffffff;">
   <div class="container">
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <!-- Enlaces de navegación -->
-      <ul class="navbar-nav me-auto">
+    <div class="w-100 d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3">
+      <!-- Logo y Enlaces -->
+      <ul class="navbar-nav me-lg-auto d-flex flex-row gap-4 align-items-center">
+        <!-- Logo -->
         <li class="nav-item">
-          <a class="nav-link px-4 text-secondary" routerLink="/expenses"
-            routerLinkActive="fw-semibold text-dark"
-            style="font-size: 15px;">
-            Inicio
+          <a class="navbar-brand d-flex align-items-center" routerLink="/expenses">
+            <i class="bi bi-wallet2 text-primary me-2" style="font-size: 24px;"></i>
+            <span class="font-monospace fw-bold" style="font-size: 20px;">Proyecto Final: Expense</span>
+          </a>
+        </li>
+        <!-- Enlaces de navegación -->
+        <li class="nav-item">
+          <a class="nav-link d-flex align-items-center gap-2 hover-effect" routerLink="/expenses"
+            routerLinkActive="active-link">
+            <i class="bi bi-house-door"></i>
+            <span>Inicio</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-4 text-secondary" routerLink="/creditos" routerLinkActive="fw-semibold text-dark"
-            style="font-size: 15px;">
-            Créditos
+          <a class="nav-link d-flex align-items-center gap-2 hover-effect" routerLink="/creditos"
+            routerLinkActive="active-link">
+            <i class="bi bi-info-circle"></i>
+            <span>Créditos</span>
           </a>
         </li>
       </ul>
 
       <!-- Área de usuario -->
-      <div class="navbar-nav align-items-center">
-        <span class="nav-item nav-link text-secondary me-3" style="font-size: 15px;">
-          Bienvenido, {{ authService.currentUserValue?.username }}
-        </span>
-        <button class="btn btn-danger border-0 px-4" (click)="logout()" style="font-size: 15px;">
-          Salir
+      <div class="d-flex flex-column flex-lg-row align-items-center gap-3">
+        <div class="user-welcome d-flex align-items-center gap-2">
+          <i class="bi bi-person-circle text-primary" style="font-size: 24px;"></i>
+          Hola,
+          <span class="fw-medium text-dark">
+            {{ authService.currentUserValue?.username }},
+          </span>
+          bienvenido
+        </div>
+        <button class="btn btn-danger d-flex align-items-center gap-2 rounded-pill px-4 hover-lift" (click)="logout()">
+          <i class="bi bi-box-arrow-right"></i>
+          <span>Salir</span>
         </button>
       </div>
     </div>
