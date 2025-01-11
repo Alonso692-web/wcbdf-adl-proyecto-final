@@ -1,5 +1,5 @@
-<div class="login-container min-vh-100 d-flex align-items-center py-5" 
-     style="background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);">
+<div class="login-container min-vh-100 d-flex align-items-center py-5"
+  style="background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-6 col-lg-4">
@@ -19,43 +19,43 @@
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <!-- Campo Usuario -->
               <div class="form-floating mb-4">
-                <input type="text"
-                       formControlName="username"
-                       class="form-control border-0 bg-light"
-                       [ngClass]="{ 'is-invalid': submitted && loginForm.get('username')?.errors }"
-                       id="username"
-                       placeholder="Usuario">
+                <input type="text" formControlName="username" class="form-control border-0 bg-light"
+                  [ngClass]="{ 'is-invalid': submitted && loginForm.get('username')?.errors }" id="username"
+                  placeholder="Usuario">
                 <label for="username">
                   <i class="bi bi-person me-2"></i>Usuario
                 </label>
-                <div *ngIf="submitted && loginForm.get('username')?.errors" 
-                     class="error-message">
+                <div *ngIf="submitted && loginForm.get('username')?.errors" class="error-message">
                   <i class="bi bi-exclamation-circle me-1"></i>
                   <small>Por favor, ingresa tu nombre de usuario</small>
                 </div>
               </div>
 
               <!-- Campo Contraseña -->
-              <div class="form-floating mb-4">
-                <input type="password"
-                       formControlName="password"
-                       class="form-control border-0 bg-light"
-                       [ngClass]="{ 'is-invalid': submitted && loginForm.get('password')?.errors }"
-                       id="password"
-                       placeholder="Contraseña">
+              <!-- Campo Contraseña -->
+              <div class="form-floating mb-4 position-relative">
+                <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                  class="form-control border-0 bg-light"
+                  [ngClass]="{ 'is-invalid': submitted && loginForm.get('password')?.errors }" id="password"
+                  placeholder="Contraseña">
                 <label for="password">
                   <i class="bi bi-lock me-2"></i>Contraseña
                 </label>
-                <div *ngIf="submitted && loginForm.get('password')?.errors" 
-                     class="error-message">
+                <div *ngIf="submitted && loginForm.get('password')?.errors" class="error-message">
                   <i class="bi bi-exclamation-circle me-1"></i>
                   <small>Por favor, ingresa tu contraseña</small>
                 </div>
+
+                <!-- Ícono de Mostrar/Ocultar contraseña -->
+                <button type="button" class="btn btn-link btn-sm position-absolute end-0 top-50 translate-middle-y pe-3"
+                  (click)="togglePasswordVisibility()" aria-label="Mostrar u ocultar contraseña">
+                  <i [class]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+                </button>
               </div>
 
+
               <!-- Botón Submit -->
-              <button type="submit" 
-                      class="btn btn-primary w-100 py-3 rounded-3 mb-3 position-relative overflow-hidden">
+              <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 mb-3 position-relative overflow-hidden">
                 <span class="d-flex align-items-center justify-content-center">
                   <span>Iniciar Sesión</span>
                   <i class="bi bi-arrow-right-circle ms-2"></i>
