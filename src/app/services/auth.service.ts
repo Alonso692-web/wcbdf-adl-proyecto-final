@@ -52,30 +52,6 @@ export class AuthService {
 
   login(username: string, password: string): Observable<any> {
 
-    if (username === 'admin' && password === 'administrador1234') {
-      password = '1234';
-    }
-
-    if (username === 'user' && password === 'usuario1234') {
-      password = 'user1234';
-    }
-
-    if (username === 'moderator' && password === 'moderador1234') {
-      password = 'mode1234';
-    }
-
-    if (username === 'editor' && password === 'editor1234') {
-      password = 'editor1234';
-    }
-
-    if (username === 'developer' && password === 'desarrollador1234') {
-      password = 'dev1234';
-    }
-
-    if (username === 'analyst' && password === 'analista1234') {
-      password = 'ana1234';
-    }
-
     // Verificar si las credenciales son correctas
     if (this.userPasswords[username] !== password) {
       return throwError({ status: 401, message: 'Credenciales inválidas' });
