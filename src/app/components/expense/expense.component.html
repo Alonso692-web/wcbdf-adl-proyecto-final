@@ -13,7 +13,7 @@
     </div>
   </div>
   <div *ngIf="!loading" class="table-responsive">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover" *ngIf="listadoLogs.length > 0; else noData">
       <thead>
         <tr>
           <th style="text-align: center;">expenseId</th>
@@ -42,7 +42,13 @@
         </tr>
       </tbody>
     </table>
+    <ng-template #noData>
+      <div class="text-center">
+        <p>No hay gastos registrados.</p>
+      </div>
+    </ng-template>
   </div>
+
 
 </div>
 
@@ -99,5 +105,19 @@
       (click)="onSubmitLog(modal)">
       {{ isEditMode ? 'Actualizar' : 'Agregar' }}
     </button>
+  </div>
+</ng-template>
+
+<ng-template #deleteConfirmModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Confirmación de eliminación</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <p>¿Está seguro que desea eliminar este gasto?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Cancelar</button>
+    <button type="button" class="btn btn-danger" (click)="confirmDelete(modal)">Eliminar</button>
   </div>
 </ng-template>

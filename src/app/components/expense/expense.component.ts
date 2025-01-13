@@ -24,11 +24,15 @@ interface Expense {
 })
 export class LogComponent implements OnInit {
   @ViewChild('logModal') logModal: any;
+  @ViewChild('deleteConfirmModal') deleteConfirmModal: any;
+
   listadoLogs: Expense[] = [];
   loading = false;
   logForm: FormGroup;
   isEditMode = false;
   currentLogId: number | null = null;
+  expenseToDeleteId: number | null = null;
+
 
   constructor(
     private logsService: LogsService,
@@ -83,18 +87,11 @@ export class LogComponent implements OnInit {
     this.modalService.open(this.logModal, { backdrop: 'static', size: 'lg' });
   }
 
+
   eliminarLog(expenseId: number) {
     if (this.authService.hasAuthority('DELETE')) {
-      if (confirm('¿Está seguro que desea eliminar este gasto?')) {
-        this.logsService.deleteLog(expenseId).subscribe({
-          next: () => {
-            this.cargarLogs();
-          },
-          error: (error) => {
-            console.error('Error al eliminar el gasto:', error);
-          },
-        });
-      }
+      this.expenseToDeleteId = expenseId;
+      this.modalService.open(this.deleteConfirmModal, { backdrop: 'static', size: 'sm' });
     } else {
       alert('No tienes permiso para eliminar gastos.');
     }
@@ -136,6 +133,22 @@ export class LogComponent implements OnInit {
         },
         error: (err) => {
           console.error('Error al crear el gasto:', err);
+        },
+      });
+    }
+  }
+
+  confirmDelete(modal: any) {
+    if (this.expenseToDeleteId !== null) {
+      this.logsService.deleteLog(this.expenseToDeleteId).subscribe({
+        next: () => {
+          modal.close();
+          this.listadoLogs = this.listadoLogs.filter(log => log.expenseId !== this.expenseToDeleteId);
+          this.expenseToDeleteId = null;
+        },
+        error: (error) => {
+          console.error('Error al eliminar el gasto:', error);
+          this.expenseToDeleteId = null;
         },
       });
     }
